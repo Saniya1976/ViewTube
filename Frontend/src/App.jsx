@@ -4,9 +4,19 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
 import {useEffect} from 'react';
+import { use } from 'react';
 
 function App() {
    const [jokes,setJokes]=useState([]);
+   useEffect(()=>{
+    axios.get('/api/jokes')
+    .then((response)=>{
+      setJokes(response.data);
+    })
+    .catch((error)=>{
+      console.log('Error fetching jokes:', error);
+    });
+  },[]);
   return (
    
     <>
