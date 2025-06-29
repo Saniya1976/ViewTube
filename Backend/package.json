@@ -12,11 +12,14 @@
   "author": "Saniya",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.19.2",
-    "morgan": "^1.10.0"
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.16.1",
+    "morgan": "^1.10.0",
+    "prettier": "^3.6.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.1.10"
+    
   }
 }
