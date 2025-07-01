@@ -47,7 +47,7 @@ const videoSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    ispublished: {
+    ispublic: {
         type: Boolean,
         default: false
     },
