@@ -2,8 +2,10 @@ import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import connectDB from './db/connectDB.js';
+dotenv.config({path: './env'});
+connectDB();
 
-dotenv.config();
 
 const server = express();
 server.use(express.json());
@@ -13,7 +15,15 @@ server.use(morgan('dev'));
 server.get('/', (req, res) => {
   res.send('<h1>Welcome to ChaiCode Server</h1>');
 });
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 8000;
+
+connectDB()
+.then(() => {
+  server.listen(PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT  }`);
+  })
+})
+.catch((error) => {
+  console.error('Database connection failed:', error);
+  process.exit(1);
 });
